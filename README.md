@@ -34,10 +34,8 @@ demonstrating how to extend data without violating SOLID principles.
 This section also provides an overview of how lambdas can be used in the Kotlin ecosystem, 
 which is particularly important as most of Compose is based on the trailing lambda paradigm.
 
-## Kotlin Delegates (delegates)
-
-This section serves as a bridge to understand Kotlin's general capabilities and what can be accomplished with delegates.
-
 ## Kotlin DSL (dsl)
 
 This part introduces the potential of Kotlin for creating Domain-Specific Languages (DSLs) using extension functions.
+
+The solutions to these exercises are available in the `solutions` branch.
