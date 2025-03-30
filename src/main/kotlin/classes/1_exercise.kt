@@ -51,36 +51,11 @@ interface Repository<T, ID> {
     val entityType: String
 }
 
-open class BaseRepository<T, ID>(initialData: Map<ID, T>) : Repository<T, ID> {
-    protected val dataStore: MutableMap<ID, T> = initialData.toMutableMap()
-
-    override fun findById(id: ID): T? = dataStore[id]
-
-    override fun findAll(): List<T> = dataStore.values.toList()
-
-    override fun save(entity: T): T {
-        // Simplified save operation
-        dataStore[getId(entity)] = entity
-        return entity
-    }
-
-    override fun delete(id: ID): Boolean = dataStore.remove(id) != null
-
-    protected open fun getId(entity: T): ID {
-        throw NotImplementedError("getId is not implemented")
-    }
-
-    override val entityType: String = this::class.simpleName ?: "Unknown"
-}
-
 data class User(val id: String, var name: String, var email: String)
 
-class UserRepository(initialData: Map<String, User> = emptyMap()) : BaseRepository<User, String>(initialData) {
-    override fun getId(entity: User): String = entity.id
-}
 
 fun main() {
-    val userRepository = UserRepository()
+    val userRepository: Repository<User, String> = TODO()
 
     // Add users
     val user1 = User("1", "John Doe", "john@example.com")

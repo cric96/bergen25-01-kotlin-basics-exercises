@@ -24,34 +24,16 @@ package functional
 4.  Demonstrate Usage:
  *   Create an initial `VotingState` (e.g., `val initialState = VotingState(emptyMap())`).
  *   Define a list of candidates.
- *   Simulate casting several votes using the `applyAction` function and lambda expressions that internally call your `castVote` logic (or directly use `castVote` if you prefer, but using `applyAction` demonstrates the pattern better).
+ *   Simulate casting several votes using the `applyAction` function and lambda expressions that internally call your `castVote` logic
+ *   (or directly use `castVote` if you prefer, but using `applyAction` demonstrates the pattern better).
  *   Print the final `VotingState` to show the accumulated votes. Ensure intermediate states remain unchanged if you were to hold references to them.
  **/
 
-data class Candidate(val id: String, val name: String)
-data class VotingState(val votes: Map<Candidate, Int>)
-
 object VotingSystem {
-    fun castVote(currentState: VotingState, candidateId: String): VotingState {
-        val candidate = currentState.votes.keys.find { it.id == candidateId }
-        val updatedVotes = currentState.votes.toMutableMap()
-        if (candidate != null) {
-            updatedVotes[candidate] = updatedVotes.getValue(candidate) + 1
-        } else {
-            val newCandidate = Candidate(candidateId, "New Candidate")
-            updatedVotes[newCandidate] = 1
-        }
-        return VotingState(updatedVotes)
-    }
+    // TODO
 }
 
-fun applyAction(currentState: VotingState, action: (VotingState) -> VotingState): VotingState = action(currentState)
 
 fun main() {
-    val initialState = VotingState(emptyMap())
-    val candidates = listOf("A", "B", "C", "A", "B", "A", "C", "B", "A", "B")
-    val finalState = candidates.fold(initialState) { state, candidateId ->
-        applyAction(state) { VotingSystem.castVote(it, candidateId) }
-    }
-    println(finalState)
+
 }

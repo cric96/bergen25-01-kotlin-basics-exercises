@@ -1,4 +1,4 @@
-package org.example.base
+package base
 
 /**
  * Goal:
@@ -43,24 +43,7 @@ package org.example.base
  * -    (Optional) Use the `takeIf` function to conditionally calculate the average.
  */
 
-fun analyzeData(readings: List<Double?>): String {
-    // Initialize variables to store the summary data
-    val totalReadings = readings.size
-    val validReadings = readings.count { it != null }
-    val validReadingsList = readings.filterNotNull()
-    val average = validReadingsList.takeIf { it.isNotEmpty() }?.average()
-    val min = validReadingsList.minOrNull()
-    val max = validReadingsList.maxOrNull()
-
-    // Generate the summary string
-    return buildString {
-        appendLine("Total readings: $totalReadings")
-        appendLine("Valid readings: $validReadings")
-        appendLine("Average: ${average ?: "N/A"}")
-        appendLine("Min: ${min ?: "N/A"}")
-        appendLine("Max: ${max ?: "N/A"}")
-    }
-}
+fun analyzeData(readings: List<Double?>): String = TODO()
 fun main() {
     // Test cases
     val readings1 = listOf(10.1, 20.2, null, 30.3, 40.4, 50.5)

@@ -1,4 +1,4 @@
-package org.example.base
+package base
 
 /**
  * Goal:
@@ -35,20 +35,7 @@ package org.example.base
  * -   (Optional) consider using `mapNotNull` to transform and filter elements in a single step.
  */
 
-fun transformText(list: List<Any>): List<String> = list.mapNotNull {
-    when(it) {
-            is Int -> it.toString()
-            is String -> {
-                when {
-                    it.startsWith("UPPER:") -> it.substringAfter(":").uppercase()
-                    it.startsWith("LOWER:") -> it.substringAfter(":").lowercase()
-                    it.startsWith("REVERSE:") -> it.substringAfter(":").reversed()
-                    else -> it
-                }
-            }
-            else -> null
-        }
-    }
+fun transformText(list: List<Any>): List<String> = TODO()
 
 fun main() {
     val input = listOf("UPPER:example", 123, "LOWER:TEST", "REVERSE:abc", true, "そのまま", 45.6)

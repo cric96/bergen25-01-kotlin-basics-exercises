@@ -119,60 +119,24 @@ fun UiElement.renderElement(element: UiElement, level: Int) {
 }
 
 class ScreenBuilder {
-    private val children = mutableListOf<UiElement>()
-    private var title: String? = null
-
-    fun title(value: String) {
-        title = value
-    }
-
-    fun container(id: String, orientation: Orientation = Orientation.VERTICAL, block: ContainerBuilder.() -> Unit) {
-        val builder = ContainerBuilder(id, orientation)
-        builder.block()
-        children.add(builder.build())
-    }
-
-    fun text(id: String, content: String) {
-        children.add(UiText(id, content))
-    }
-
-    fun button(id: String, text: String, onClickActionId: String) {
-        children.add(UiButton(id, text, onClickActionId))
-    }
-
-    fun build(): UiScreen = UiScreen("mainScreen", title, children)
+    // TODO!
 }
 
 class ContainerBuilder(val id: String, val orientation: Orientation) {
-    private val children = mutableListOf<UiElement>()
-
-    fun container(id: String, orientation: Orientation = Orientation.VERTICAL, block: ContainerBuilder.() -> Unit) {
-        val builder = ContainerBuilder(id, orientation)
-        builder.block()
-        children.add(builder.build())
-    }
-
-    fun text(id: String, content: String) {
-        children.add(UiText(id, content))
-    }
-
-    fun button(id: String, text: String, onClickActionId: String) {
-        children.add(UiButton(id, text, onClickActionId))
-    }
-
-    fun build(): UiContainer = UiContainer(id, orientation, children)
+    // TODO!
 }
 
-fun defineScreen(id: String, block: ScreenBuilder.() -> Unit): UiScreen {
-    val builder = ScreenBuilder()
-    builder.block()
-    return builder.build()
-}
+// ScreenBuilder.() -> Unit means a lambda with receiver of type ScreenBuilder
+// Lambda with receiver allows us to access the members of the receiver (ScreenBuilder) directly
+// e.g., title("User Profile") instead of title(screenBuilder, "User Profile")
+// it is a common pattern in Kotlin DSLs to use lambdas with receivers for building structures
+fun defineScreen(id: String, block: ScreenBuilder.() -> Unit): UiScreen = TODO()
 
 fun main() {
     // Create an example of it
-
-    val myScreen = defineScreen("mainScreen") {
+    val myScreen: UiScreen = TODO()
+    /**
+    defineScreen("mainScreen") {
         title("User Profile")
 
         container("userInfo", orientation = Orientation.VERTICAL) {
@@ -189,7 +153,7 @@ fun main() {
             button("cancelButton", text = "Cancel", onClickActionId = "handleCancel")
         }
     }
-
+    */
     // Print the structure for verification
     myScreen.render()
 }
